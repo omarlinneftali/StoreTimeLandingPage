@@ -6,6 +6,8 @@ const ejs = require("ejs-mate");
 var bodyParser = require("body-parser");
 var mysql = require("mysql");
 
+const PORT = process.env.PORT || 50000;
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
@@ -23,8 +25,6 @@ app.engine(
 
 app.set("view engine", ".hbs");
 app.set("views", path.join(__dirname, "views"));
-
-const PORT = process.env.PORT || 5000;
 
 app.post("/registry", (req, res) => {
   user = req.body;
