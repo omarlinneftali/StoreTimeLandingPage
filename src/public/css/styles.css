@@ -676,13 +676,6 @@ input[type="checkbox"] {
   transition: all 0.2s;
 }
 
-.navbar-custom .navbar-brand.logo-image img {
-  width: 10.5rem;
-  height: 4rem;
-  margin-bottom: 1px;
-  -webkit-backface-visibility: hidden;
-}
-
 .navbar-custom .navbar-brand.logo-image.color {
   display: block;
 }
