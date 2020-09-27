@@ -33,8 +33,8 @@ app.post("/registry", (req, res) => {
 
   const con = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "root",
+    user: "omarlin",
+    password: "Storetime1@",
     database: "users",
   });
   con.connect(function (err) {
