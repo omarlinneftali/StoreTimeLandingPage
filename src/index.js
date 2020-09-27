@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
+const handlebars = require("express-handlebars");
 const ejs = require("ejs-mate");
 var bodyParser = require("body-parser");
 var mysql = require("mysql");
@@ -9,8 +10,18 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
-app.engine("ejs", ejs);
-app.set("view engine", "ejs");
+app.engine(
+  ".hbs",
+  handlebars({
+    layoutsDir: __dirname + "/views/layouts",
+    defaultLayout: "main",
+    extname: "hbs",
+    //for partial directory
+    partialsDir: __dirname + "/views/partials",
+  })
+);
+
+app.set("view engine", ".hbs");
 app.set("views", path.join(__dirname, "views"));
 
 const PORT = process.env.PORT || 5000;
@@ -37,7 +48,11 @@ app.post("/registry", (req, res) => {
     });
   });
 
-  res.render("index", { body: req.body });
+  res.render("pages/registry", { body: req.body });
+});
+
+app.get("/", (req, res) => {
+  res.render("pages/index");
 });
 
 app.listen(PORT, () => console.log("listening"));

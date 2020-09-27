@@ -1,0 +1,68 @@
+<header id="header" class="header">
+    <div class="header-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-container"></div>
+                    <!-- end of text-container -->
+                </div>
+                <!-- end of col -->
+                <div class="col-lg-6">
+                    <!-- Get Quote Form -->
+                    <div class="form-container">
+                        <form id="getQuoteForm" data-toggle="validator" data-focus="false" method="POST"
+                            action="/registry">
+                            <div class="form-group">
+                                <input type="text" class="form-control-input" id="gname" name="name" required />
+                                <label class="label-control" for="gname">Nombre Completo</label>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control-input" id="gemail" name="email" />
+                                <label class="label-control" for="gemail">Email</label>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control-input" id="gphone" name="phone" required />
+                                <label class="label-control" for="gphone">Celular</label>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control-select" id="gselect" required name="usertype">
+                                    <option class="select-option" value="" disabled selected>
+                                        Tipo de usuario
+                                    </option>
+                                    <option class="select-option" value="1">
+                                        Barbero
+                                    </option>
+                                    <option class="select-option" value="2">
+                                        Patrocinador
+                                    </option>
+                                    <option class="select-option" value="3">
+                                        Usuario
+                                    </option>
+                                </select>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="form-control-submit-button">
+                                    Enviar
+                                </button>
+                            </div>
+                            <div class="form-message">
+                                <div id="gmsgSubmit" class="h3 text-center hidden"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- end of form-container -->
+                    <!-- end of get quote form -->
+                </div>
+                <!-- end of col -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container -->
+    </div>
+    <!-- end of header-content -->
+</header>
