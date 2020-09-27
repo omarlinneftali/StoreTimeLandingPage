@@ -7,7 +7,6 @@ var bodyParser = require("body-parser");
 var mysql = require("mysql");
 
 const PORT = process.env.PORT || 50000;
-
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
