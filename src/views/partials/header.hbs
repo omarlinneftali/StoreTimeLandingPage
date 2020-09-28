@@ -70,17 +70,28 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav ml-auto">
+        {{#if user.exist}}
+        <span class="user"> {{user.name}}</span>
+        {{/if}}
         <li class="nav-item">
           <a class="nav-link page-scroll" href="/">INICIO <span class="sr-only">(current)</span></a>
         </li>
+        {{#if user.exist}}
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#services">PATROCINADORES</a>
+          <a class="nav-link page-scroll" href="/users">USUARIOS</a>
         </li>
-
+        {{/if}}
+        {{#if user.exist}}
+        <li class="nav-item">
+          <a class="nav-link page-scroll" href="/logout"> CERRAR SESIÓN </a>
+        </li>
+        {{else }}
 
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#contact">CONTACTOS</a>
+          <a class="nav-link page-scroll" href="/login"> INICIAR SESIÓN </a>
         </li>
+        {{/if}}
+
       </ul>
       <span class="nav-item social-icons">
         <span class="fa-stack">

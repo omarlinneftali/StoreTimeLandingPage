@@ -19,11 +19,19 @@ flush privileges;
 
 
 
+create table UserLogin(
+ID int primary key auto_increment,
+Name varchar(50),
+Password varchar(50)
+
+
+);
 
 
 
 create table UserType(ID int primary key, name nvarchar(30));
 
 
-insert into UserType values(1, "Barbero"), (2,"Patrocinador"), (3,"Usuario")
+insert into UserType values(1, "Barbero"), (2,"Patrocinador"), (3,"Usuario");
+insert into UserLogin(Name,Password) values("freylin", "freylin123")
 

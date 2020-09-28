@@ -1,0 +1,53 @@
+<header id="header" class="header">
+    <div class="header-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-container"></div>
+                    <!-- end of text-container -->
+                </div>
+                <!-- end of col -->
+
+
+                <div class="col-lg-6">
+                    <div class="form-container">
+                        <div class="text-center">
+                            <h4>INICIAR SESSIÓN</h4>
+                        </div>
+
+                        <form id="loginForm" data-toggle="validator" data-focus="false" method="POST" action="/login">
+                            <div class="form-group">
+                                <input type="text" class="form-control-input" id="username" name="username" required />
+                                <label class="label-control" for="gname">Nombre de Usuario</label>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control-input" id="password" name="password"
+                                    required />
+                                <label class="label-control" for="gemail">Contraseña</label>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <button type="submit" class="form-control-submit-button">
+                                    Iniciar Session
+                                </button>
+                            </div>
+                            <div class="form-message">
+                                <div id="loginFormMsg" class="h3 text-center hidden"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- end of form-container -->
+                    <!-- end of get quote form -->
+                </div>
+                <!-- end of col -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container -->
+    </div>
+    <!-- end of header-content -->
+</header>

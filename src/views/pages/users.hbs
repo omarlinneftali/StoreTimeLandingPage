@@ -1,0 +1,35 @@
+<div class="table-container">
+
+
+    <h3>Lista de usuarios</h3>
+
+
+
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Nombre Completo
+                </th>
+                <th>Correo Electrónico</th>
+                <th>Celular</th>
+                <th>
+                    Tipo de Usuario
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td>{{this.Name}}</td>
+                <td>{{this.Email}}</td>
+                <td>{{this.Phone}}</td>
+                <td>{{this.userType}}</td>
+            </tr>
+            {{else}}
+            {{"No hay usuarios registrados"}}
+            {{/each}}
+        </tbody>
+    </table>
+</div>
