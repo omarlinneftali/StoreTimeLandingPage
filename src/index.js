@@ -12,8 +12,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
-app.locals.session = "";
-
 app.engine(
   ".hbs",
   handlebars({
@@ -75,7 +73,7 @@ app.post("/login", (req, res, next) => {
 
       if (result.length) {
         req.session.userName = result[0].Name;
-        req.app.locals.user = {
+        req.locals.user = {
           name: req.session.userName,
           exist: true,
         };
@@ -90,7 +88,7 @@ app.post("/login", (req, res, next) => {
 
 app.get("/logout", auth, (req, res) => {
   req.session.destroy();
-  req.app.locals.user = null;
+  req.locals.user = null;
   res.redirect("/");
 });
 
