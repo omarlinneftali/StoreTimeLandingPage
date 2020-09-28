@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 let { port, connectionConfig } = require("./config");
 let mysql = require("mysql");
 let session = require("express-session");
-const { user } = require("./DBconnection");
 
 const app = express();
 
