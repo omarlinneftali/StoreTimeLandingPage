@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 let { port, connectionConfig } = require("./config");
 let mysql = require("mysql");
 let session = require("express-session");
+const { user } = require("./DBconnection");
 
 const app = express();
 
@@ -18,11 +19,7 @@ app.engine(
     layoutsDir: __dirname + "/views/layouts",
     defaultLayout: "main",
     extname: "hbs",
-    helpers: {
-      //  user: function () {
-      // return;
-      // },
-    },
+    helpers: {},
     //for partial directory
     partialsDir: __dirname + "/views/partials",
   })
@@ -63,9 +60,9 @@ app.post("/login", (req, res, next) => {
   let sql = `select Name from UserLogin where Name='${req.body.username}' AND Password='${req.body.password}'`;
   let result;
 
-  const connection = mysql.createConnection(connectionConfig);
+  const pool = mysql.createPool(connectionConfig);
 
-  connection.connect((err) => {
+  pool.getConnection((err, connection) => {
     if (err) throw err;
     console.log("Mysql Connected...");
 
@@ -97,10 +94,10 @@ app.post("/registry", (req, res) => {
   let user = req.body;
   let userTypeID = parseInt(user.usertype);
 
-  const connection = mysql.createConnection(connectionConfig);
+  const pool = mysql.createPool(connectionConfig);
 
   let sql = `INSERT INTO Users(Name, Email, Phone, UserTypeID)  VALUES ('${user.name}', '${user.email}','${user.phone}',${userTypeID} )`;
-  connection.connect((err) => {
+  pool.getConnection((err, connection) => {
     if (err) throw err;
     console.log("Mysql Connected...");
 
@@ -121,9 +118,9 @@ app.post("/registry", (req, res) => {
 app.get("/users", auth, (req, res) => {
   var sql = `select Users.*, UserType.Name as userType from Users inner join UserType on Users.UserTypeID=UserType.ID`;
 
-  const connection = mysql.createConnection(connectionConfig);
+  const pool = mysql.createPool(connectionConfig);
 
-  connection.connect((err) => {
+  pool.getConnection((err, connection) => {
     if (err) throw err;
     console.log("Mysql Connected...");
 
