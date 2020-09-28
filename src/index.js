@@ -114,7 +114,7 @@ app.post("/registry", (req, res) => {
 });
 
 app.get("/users", auth, (req, res) => {
-  var sql = `select Users.*, UserType.Name as userType from users inner join UserType on users.ID=UserType.ID`;
+  var sql = `select Users.*, UserType.Name as userType from Users inner join UserType on Users.ID=UserType.ID`;
 
   const connection = mysql.createConnection(connectionConfig);
 
