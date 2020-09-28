@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
-app.locals.session = "gola";
+app.locals.session = "";
 
 app.engine(
   ".hbs",
@@ -114,7 +114,7 @@ app.post("/registry", (req, res) => {
 });
 
 app.get("/users", auth, (req, res) => {
-  var sql = `select users.*, UserType.Name as userType from users inner join UserType on users.ID=UserType.ID`;
+  var sql = `select Users.*, UserType.Name as userType from users inner join UserType on users.ID=UserType.ID`;
 
   const connection = mysql.createConnection(connectionConfig);
 
