@@ -160,6 +160,16 @@ a.white {
   margin-right: auto;
   margin-left: auto;
   width: 90%;
+  margin-bottom: 3%;
+}
+a.paginate_button.current {
+  border: 1px solid #fd6f2d;
+  border-radius: 1.5rem;
+  background-color: #fd6f2d;
+  color: #fff;
+  font: 700 0.75rem/1.75rem "Raleway", sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .btn-solid-reg {

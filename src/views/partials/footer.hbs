@@ -77,12 +77,7 @@
 <!-- end of copyright -->
 <!-- end of copyright -->
 
-<script defer>
 
-  $(document).ready(function () {
-    $('#table').DataTable();
-  });
-</script>
 <!-- Scripts -->
 
 
@@ -104,7 +99,15 @@
 <!-- Validator.js - Bootstrap plugin that validates forms -->
 <script src="./js/scripts.js"></script>
 
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/r-2.2.6/datatables.min.js"></script>
+
+<script defer>
+
+  $(document).ready(function () {
+    $('#table').DataTable();
+  });
+</script>
 
 <!-- Custom scripts -->
 </body>
