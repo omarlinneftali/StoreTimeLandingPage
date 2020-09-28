@@ -680,7 +680,7 @@ input[type="checkbox"] {
 /**************************/
 
 .navbar-custom .navbar-brand.logo-image img {
-  width: 5.5rem;
+  width: 6.5rem;
   height: 3rem;
   margin-bottom: 1px;
   -webkit-backface-visibility: hidden;
@@ -1963,7 +1963,7 @@ input[type="checkbox"] {
   padding-top: 5rem;
   background-color: #2f3a43;
   margin-bottom: 0px;
-  height: 20rem;
+  height: 22rem;
 }
 
 .footer .footer-col {
