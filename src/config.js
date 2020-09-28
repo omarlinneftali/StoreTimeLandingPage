@@ -2,7 +2,7 @@ const path = require("path");
 const node_env = require("./node_env.js");
 
 const DBConnection = require(path.join(__dirname, "DBConnection"));
-const ENV = process.env.NODE_END || "DEVELOPMENT";
+const ENV = process.env.NODE_ENV || "DEVELOPMENT";
 
 const PORT = node_env[ENV].PORT;
 

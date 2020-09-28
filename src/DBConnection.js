@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 const node_env = require("./node_env.js");
 
-const ENV = process.env.NODE_END || "DEVELOPMENT";
+const ENV = process.env.NODE_ENV || "DEVELOPMENT";
 
 const connectionConfig = {
   host: node_env[ENV].DB_HOST,
