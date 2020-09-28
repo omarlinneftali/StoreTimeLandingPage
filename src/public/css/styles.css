@@ -1968,7 +1968,9 @@ input[type="checkbox"] {
   background-color: #2f3a43;
   background-size: cover;
   margin-bottom: 0px;
-  height: 28rem;
+  margin-top: 0px;
+
+  height: 32rem;
 }
 
 .footer .footer-col {
