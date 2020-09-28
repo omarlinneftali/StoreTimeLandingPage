@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 let { port, connectionConfig } = require("./config");
 let mysql = require("mysql");
 let session = require("express-session");
+const { user } = require("./DBconnection");
 
 const app = express();
 
@@ -19,9 +20,9 @@ app.engine(
     defaultLayout: "main",
     extname: "hbs",
     helpers: {
-      user: function () {
-        return app.locals.user;
-      },
+      //  user: function () {
+      // return;
+      // },
     },
     //for partial directory
     partialsDir: __dirname + "/views/partials",
@@ -30,10 +31,6 @@ app.engine(
 
 app.set("view engine", ".hbs");
 app.set("views", path.join(__dirname, "views"));
-
-app.get("/", (req, res) => {
-  res.render("pages/index");
-});
 
 app.use(
   session({
@@ -55,7 +52,12 @@ const auth = (req, res, next) => {
 };
 
 app.get("/login", (req, res) => {
-  res.render("pages/login");
+  res.render("pages/login", {
+    user:
+      req.session && req.session.userName
+        ? { name: req.session.userName, exist: true }
+        : {},
+  });
 });
 
 app.post("/login", (req, res, next) => {
@@ -73,7 +75,7 @@ app.post("/login", (req, res, next) => {
 
       if (result.length) {
         req.session.userName = result[0].Name;
-        req.locals.user = {
+        res.locals.user = {
           name: req.session.userName,
           exist: true,
         };
@@ -88,12 +90,12 @@ app.post("/login", (req, res, next) => {
 
 app.get("/logout", auth, (req, res) => {
   req.session.destroy();
-  req.locals.user = null;
+  res.locals.user = null;
   res.redirect("/");
 });
 
 app.post("/registry", (req, res) => {
-  user = req.body;
+  let user = req.body;
   let userTypeID = parseInt(user.usertype);
 
   const connection = mysql.createConnection(connectionConfig);
@@ -106,7 +108,13 @@ app.post("/registry", (req, res) => {
     connection.query(sql, (err, result) => {
       if (err) throw err;
       console.log("1 record inserted");
-      res.render("pages/registry", { body: req.body });
+      res.render("pages/registry", {
+        body: req.body,
+        user:
+          req.session && req.session.userName
+            ? { name: req.session.userName, exist: true }
+            : {},
+      });
     });
   });
 });
@@ -125,8 +133,26 @@ app.get("/users", auth, (req, res) => {
       console.log(result);
       res.render("pages/users", {
         users: result,
+        user:
+          req.session && req.session.userName
+            ? { name: req.session.userName, exist: true }
+            : {},
       });
     });
+  });
+});
+
+app.get("/", (req, res) => {
+  console.log(
+    req.session && req.session.userName
+      ? { name: req.session.userName, exist: true }
+      : {}
+  );
+  res.render("pages/index", {
+    user:
+      req.session && req.session.userName
+        ? { name: req.session.userName, exist: true }
+        : {},
   });
 });
 
